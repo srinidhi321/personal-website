@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Srinidhi Bhat</title>
+  <meta name="description" content="Srinidhi Bhat is an engineer at Google building LLM systems end to end: post-training, evals, agents and serving. Previously Google Search and Discover." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <canvas id="room" aria-label="Six pages arranged as the walls of a Rubik's Cube. Drag to turn the cube, drag the small cube's stickers to twist a layer, click a tile to read it."></canvas>
+
+  <div class="ui">
+    <aside class="rail rail-left">
+      <div class="brand">
+        <span class="brand-name">Srinidhi Bhat</span>
+        <p class="brand-line" id="intro"></p>
+        <span class="brand-sub" id="status"></span>
+      </div>
+      <nav class="index" aria-label="Pages">
+        <span class="rail-label">Pages</span>
+        <ol id="pageList"></ol>
+      </nav>
+      <p class="help">Drag anywhere to turn the cube. Twist it, or drag the small cube, and the pages scramble. Click a tile to read it.</p>
+    </aside>
+
+    <aside class="rail rail-right">
+      <section>
+        <span class="rail-label">Turn</span>
+        <div class="turn">
+          <button class="nav" data-nav="up" type="button"></button>
+          <button class="nav" data-nav="left" type="button"></button>
+          <button class="nav" data-nav="right" type="button"></button>
+          <button class="nav" data-nav="down" type="button"></button>
+          <button class="nav" data-nav="flip" type="button"></button>
+        </div>
+      </section>
+      <section>
+        <span class="rail-label">Twist <span class="rail-note">shift reverses</span></span>
+        <div class="twist" role="group" aria-label="Twist a layer">
+          <button type="button" data-twist="U" title="Top layer">U</button>
+          <button type="button" data-twist="D" title="Bottom layer">D</button>
+          <button type="button" data-twist="L" title="Left layer">L</button>
+          <button type="button" data-twist="R" title="Right layer">R</button>
+          <button type="button" data-twist="F" title="Front layer">F</button>
+          <button type="button" data-twist="B" title="Back layer: the page you are reading">B</button>
+        </div>
+      </section>
+      <section class="actions">
+        <button type="button" id="scrambleBtn">Scramble</button>
+        <button type="button" id="undoBtn">Undo</button>
+        <button type="button" id="solveBtn" class="primary">Solve</button>
+      </section>
+      <button class="text-btn plain-btn" id="plainBtn" type="button">Plain version</button>
+    </aside>
+  </div>
+
+  <aside class="sheet" id="sheet" hidden></aside>
+  <div class="sr-only" id="srPage" aria-live="polite"></div>
+
+  <dialog id="plain">
+    <div class="plain-head">
+      <h2>Srinidhi Bhat</h2>
+      <button type="button" class="text-btn" id="plainClose">Close</button>
+    </div>
+    <div id="plainBody"></div>
+  </dialog>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="content.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
